@@ -1,0 +1,267 @@
+---
+title: "Survival Analysis - Time to internship DSTI"
+author: "Yijun ZHU, Raphaël ADAMCZYK, Hani CHERID"
+output:
+  word_document: default
+  pdf_document: default
+---
+```{r include = FALSE}
+library(tidyverse)
+library(lubridate)
+library(broom)
+library(survival)
+```
+
+```{r include = FALSE}
+raw <- read_csv("DSTI_survey.csv")
+```
+
+### 1. How many students partecipated in the interview
+82 students participated in the interview
+```{r}
+(n_students = nrow(raw))
+```
+### 2. After data preparation, how many samples are usable for data analysis? How many samples were dropped (if any), and why?
+- Since we are analyzing time-to-internship, we need samples not null in column "When did you start looking for an internship": 18 samples are dropped
+- We also want to exclude the students who haven't started looking for internship by the time of the survey: another 13 samples are dropped
+- In total, 51 samples are usable
+
+```{r}
+sum(is.na(raw$`When did you start looking for an internship`))
+```
+```{r include=FALSE}
+data <- raw %>% select(-(3:5)) %>% drop_na("When did you start looking for an internship")
+```
+
+```{r include=FALSE}
+data <- data %>% mutate(Timestamp = as.Date(Timestamp, format = "%m/%d/%Y"), age = year(Timestamp) - `Year of birth`) %>%  mutate(sex = factor(Sex, levels = c("Female", "Male")))
+```
+
+```{r include=FALSE}
+edu_labels <- tibble(`Education: background (pick a main one you identify with)` =c("Business, Management", "Finance, Economy", "Literature, History, Philosophy", "Mathematics, Physics, Chemistry, Computer Science, Statistics", "Medicine, Biology", "Other"), education = c("mgmt", "fin", "lit", "math", "bio", "oth"))
+```
+
+```{r include=FALSE}
+data <- data %>% inner_join(edu_labels, by = "Education: background (pick a main one you identify with)") %>% mutate(education = factor(education))
+table(data$education, useNA = "always")
+```
+
+```{r include=FALSE}
+paste0(c("S", "A"), rep(15:20, each = 2))
+data <- data %>% mutate(cohort = factor(Cohort, levels = paste0(c("S", "A"), rep(15:20, each = 2))))
+```
+
+```{r include=FALSE}
+data <- data %>% mutate(findInternship = `Have you found an internship?` == "Yes")
+```
+
+```{r include=FALSE}
+data <- data %>% mutate(children = `Do you have children?` == "Yes")
+```
+
+```{r include=FALSE}
+data <- data %>% mutate(StartDate = as.Date(`When did you start looking for an internship`, format = "%m/%d/%Y")) %>% mutate(EndDate = as.Date(`When did you stopped looking for an internship`, format = "%m/%d/%Y"))  
+```
+
+```{r include=FALSE}
+data <- data %>% mutate(time = ifelse(is.na(EndDate), Timestamp-StartDate, EndDate - StartDate))
+```
+
+```{r}
+sum(data$StartDate >= data$Timestamp)
+```
+```{r include=FALSE}
+data <- subset(data, StartDate < Timestamp)
+```
+
+### 3. How long does it take to obtain an internship?Please report the median time (with a confidence interval), total number of students at the baseline, the total number of events observed, and the total number of censored observations.
+- The median time is 120 days, with 95% confidence interval the lower bound of 61 days, upper bound is NA.
+- Total students at the baseline: 51
+- Total number of events observed: 23
+- Total number of censored observations: 28
+
+```{r}
+table(data$findInternship)
+```
+```{r echo=FALSE}
+sfit <- survfit(Surv(time, findInternship) ~ 1, data = data)
+sfit
+```
+
+```{r echo=FALSE}
+ds <- with(sfit, tibble(time, surv))
+ds <- bind_rows(tibble(time = 0, surv = 1), ds)
+ggplot(ds, aes(x = time, y = 1-surv)) + geom_step() + xlab("days since the start of internship search") + ylab("Probability of finding an internship") + labs(title = "DSTI students time-to-internship", caption = "Data source: online voluntary survey, April 2020") + theme_bw(base_size = 15)
+```
+#### Probability of not having found an internship after 60 days:
+```{r}
+summary(sfit, time = 60)
+```
+The probability of not having found an internship after 60 days: 67.8% (95% CI: 0.541-0849)
+
+
+### 4. Of these variables, which ones have the most impact on the time to obtain an internship, and in which direction: cohort, age, educational background, having or not having children.
+
+#### Cohort
+- First we can select cohort S19, A19 and S20 as cohorts before as well as A20 are not informative
+- We set S20 as the reference cohort
+- From the logrank test, we get a p-value of 0.6 indicating the difference between different cohort is not statistically significant, which is validated by the Cox PH model. Although we see that A19 students are slightly more likely (1.29) to find an internship and S19 less likely (0.60) compared to S20
+
+```{r echo=FALSE}
+table(data$cohort)
+```
+
+```{r include=FALSE}
+data <- mutate(data, cohort = relevel(cohort, ref = 'S20')) 
+data_cohort <- filter(data,cohort %in% c("S19", "A19", "S20"))
+data_cohort
+```
+
+```{r echo=FALSE}
+survdiff(Surv(time, findInternship)~cohort, data = data_cohort)
+plot(survfit(Surv(time, findInternship) ~ cohort, data = data_cohort), fun ='F', col=1:3)
+legend("bottomright", col = 1:3, legend = sort(unique(data_cohort$cohort)), lty = 1)
+fit_cohort.cph <- coxph(Surv(time, findInternship)~cohort, data = data_cohort)
+summary(fit_cohort.cph)
+```
+
+#### Age
+> We analyse the difference in age by decade: 
+- p-value is quite small which means that the difference is statistically significant
+- hazard ratio is 1.72 indicating 10 years older in age leads to almost twice the probability of finding an internship
+
+```{r echo=FALSE, out.width="50%"}
+hist(data$age, xlab = 'Age')
+```
+
+```{r echo=FALSE}
+fit_age.cph <- coxph(Surv(time, findInternship) ~ I(age/10), data = data)
+summary(fit_age.cph)
+```
+
+#### Having or not having children
+- According to the Cox PH Model, the hazard ratio of TTI for people having children vs. children without children is 2.2, which means that people having children is more than twice more likely to find an internship within a certain period. 
+- Although the p-value is 0.075 which is not statistically significant
+
+```{r}
+table(data$`Do you have children?`)
+```
+
+```{r echo=FALSE}
+plot(survfit(Surv(time, findInternship) ~ children, data = data), col = 1:2, fun = "F")
+legend("bottomright", col = 1:2, lty = 1,legend = sort(unique(data$children)))
+fit_children.cph <- coxph(Surv(time, findInternship) ~ children, data = data)
+summary(fit_children.cph)
+```
+
+#### Education
+- We set Math, Physics, etc. as the reference as most of the students have this background (32 out of 51) 
+- The logrank test shows a p-value of 0.7, which means that the difference between different education background is not statistically significant, as we can see also in the Cox PH model for each of the education background vs. Math, p-value is large
+- While Mgmt background students seem 1.3 more likely to find an internship vs. Math students, other students are less likely to find an internship vs. Math students in a given time period
+
+```{r echo=FALSE}
+data <- mutate(data, education = ifelse(education == "lit", "oth", as.character(education)))
+data <-mutate(data, education = relevel(as.factor(education), ref = "math"))
+```
+
+```{r echo=FALSE}
+table(data$education)
+```
+
+```{r echo=FALSE}
+survdiff(Surv(time, findInternship) ~ education, data = data)
+fit_education.cph <- coxph(Surv(time, findInternship) ~ education, data = data)
+summary(fit_education.cph)
+```
+#### Conclusion: 
+Among all the variables, age (in decade) is the only one of statistical significance. It has an important impact on the time to obtain an internship. People 10 years older are 1.7 times more likely to find an internship. While the difference is not statistically significant, people having children are 2.2 times more likely to find an internship, this might be related to the fact that people have children are in general older.
+
+### 5. Bonus question: can you build a predictive model to identify students at high risk of a long search? How well does your model perform?
+#### Automatic model selection based on AIC: 
+
+```{r include=FALSE}
+Mfull <- coxph(Surv(time, findInternship) ~ age + education + sex + cohort + children, data = data)
+MAIC <- step(Mfull)
+```
+
+```{r}
+summary(MAIC)
+```
+With the lowest AIC, the automatic model selection has chosen that age is the most important explanatory variable for the response variable (confirmed by its own significant p-value (0.00392)). The HR being slightly greater than 1 and its p-value not too small, it indicates that age is a good feature variable for our model.
+
+#### Model-based predictions
+```{r}
+i.training <- sample.int(nrow(data), size = ceiling(nrow(data)/2), replace = FALSE)
+i.testing <- setdiff(seq_len(nrow(data)), i.training)
+d_training <- data[i.training, ]
+d_testing <- data[i.testing, ]
+```
+
+#### Train candidate model
+```{r}
+MA <- coxph(Surv(time, findInternship) ~ age, data = d_training)
+```
+
+#### Make predictions in the new dataset
+```{r}
+d_testing <- with(d_testing, tibble(age, cohort, findInternship, time))
+d_testing$lp_A <- predict(MA, newdata = d_testing, type = "lp")
+d_testing
+```
+
+```{r echo=FALSE, message=FALSE}
+list_max = c()
+for (i in 1:50) {
+  i.training <- sample.int(nrow(data), size = ceiling(nrow(data)/2), replace = FALSE)
+  i.testing <- setdiff(seq_len(nrow(data)), i.training)
+  d_training <- data[i.training, ]
+  d_testing <- data[i.testing, ]
+  MA <- coxph(Surv(time, findInternship) ~ age, data = d_training)
+  d_testing <- with(d_testing, tibble(age, cohort, findInternship, time))
+  d_testing$lp_A <- predict(MA, newdata = d_testing, type = "lp")
+  list_max = c(list_max,max(d_testing[which(d_testing$lp_A<0),"age"]))
+}
+boxplot(list_max)
+```
+With a negative linear predictor, we observe that our model considers students likely to be at risk for long-term research to be under the age of:
+```{r}
+ceiling(mean(list_max))
+```
+
+#### Assess predictive performance
+```{r echo=FALSE}
+summary(coxph(Surv(time, findInternship) ~ lp_A, data = d_testing))
+```
+This linear predictor is pretty straight with a Hazard-ratio equal to:
+```{r echo=FALSE}
+round(exp(coxph(Surv(time, findInternship) ~ lp_A, data = d_testing)$coefficients),2)
+```
+
+```{r message=FALSE}
+library(pROC)
+par(pty = 's')
+roc <- roc(d_testing$findInternship, d_testing$lp_A, plot = T, col = 'red', legacy.axes = T, percent = T, xlab = 'Percentage of False Positives', ylab = 'Percentage of True Positives')
+```
+In  presence  of  two  students  looking  for an  internship  with  the  case  where  one finds an internship and the other not, the probability   that   the   model correctly designates   the   student   who   find   an internship is:
+```{r echo=FALSE}
+cat(round(roc$auc, 2),'%')
+```
+Try several times with bagging, the average AUC is always above 70%
+```{r echo=FALSE, message=F}
+list_auc = c()
+for (i in 1:50) {
+  i.training <- sample.int(nrow(data), size = ceiling(nrow(data)/2), replace = FALSE)
+  i.testing <- setdiff(seq_len(nrow(data)), i.training)
+  d_training <- data[i.training, ]
+  d_testing <- data[i.testing, ]
+  MA <- coxph(Surv(time, findInternship) ~ age, data = d_training)
+  d_testing <- with(d_testing, tibble(age, cohort, findInternship, time))
+  d_testing$lp_A <- predict(MA, newdata = d_testing, type = "lp")
+  roc <- roc(d_testing$findInternship, d_testing$lp_A, plot = FALSE)
+  list_auc = c(list_auc,roc$auc)
+}
+mean(list_auc)
+boxplot(list_auc)
+```
+
+

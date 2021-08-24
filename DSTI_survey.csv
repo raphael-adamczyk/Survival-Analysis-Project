@@ -1,0 +1,83 @@
+Timestamp,Year of birth,Were you ever a smoker?,Year when first started smoking,Year when stopped smoking,When did you start looking for an internship,Sex,When did you stopped looking for an internship,Have you found an internship?,Education: background (pick a main one you identify with),Years of education,Do you have children?,Cohort
+11/2/2020 16:59:23,1992,No,,,11/2/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,No,A20
+11/2/2020 16:59:31,1993,"Yes, and I'm currently smoking",2011,,10/19/2020,Female,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",17,No,A20
+11/2/2020 16:59:38,1990,No,,,3/1/2021,Female,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",17,No,A20
+11/2/2020 16:59:45,1986,No,,,9/1/2020,Male,10/31/2020,Yes,"Medicine, Biology",22,Yes,S20
+11/2/2020 17:00:00,1993,No,,,11/1/2018,Male,12/31/2018,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",16,No,A18
+11/2/2020 17:00:02,1992,"Yes, and I'm currently smoking",2019,,3/1/2020,Female,7/1/2020,Yes,"Literature, History, Philosophy",18,No,A19
+11/2/2020 17:00:09,1995,No,,,10/1/2019,Male,2/1/2020,Yes,"Finance, Economy",16,No,A19
+11/2/2020 17:00:10,1992,"Yes, and I'm currently smoking",2010,,,Male,,Yes,"Finance, Economy",14,No,A20
+11/2/2020 17:00:46,1993,"Yes, and I stopped",2013,2018,12/1/2020,Male,,No,"Finance, Economy",17,No,A20
+11/2/2020 17:00:49,1989,No,,,11/2/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",18,No,S20
+11/2/2020 17:00:53,1982,No,,,10/29/2020,Female,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,No,A20
+11/2/2020 17:00:53,1997,No,,,11/2/2020,Female,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,No,A20
+11/2/2020 17:01:06,1970,No,,,8/20/2020,Male,11/1/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,Yes,S20
+11/2/2020 17:01:36,1978,No,,,9/20/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",21,Yes,S20
+11/2/2020 17:02:00,1993,No,,,1/15/2021,Male,4/15/2021,No,"Business, Management",20,No,A20
+11/2/2020 17:02:02,1991,No,,,1/1/2020,Male,2/28/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",21,No,A19
+11/2/2020 17:03:11,1981,No,,,7/1/2018,Male,,No,"Medicine, Biology",25,No,A17
+11/2/2020 17:03:35,1986,No,,,10/5/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,No,S20
+11/2/2020 17:03:38,1980,No,,,9/1/2020,Female,10/30/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",21,Yes,A20
+11/2/2020 17:03:42,1990,No,,,,Male,,,"Finance, Economy",17,No,A20
+11/2/2020 17:03:50,1994,"Yes, and I stopped",2015,2020,7/15/2019,Female,10/10/2020,Yes,"Business, Management",17,No,S19
+11/2/2020 17:04:11,1983,No,,,9/1/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",18,No,S20
+11/2/2020 17:05:26,1993,No,,,10/26/2020,Female,,No,"Medicine, Biology",18,No,A20
+11/2/2020 17:05:55,1996,No,,,11/1/2020,Female,6/1/2021,No,Other,15,No,A20
+11/2/2020 17:06:43,1981,No,,,6/1/2015,Male,6/26/2015,Yes,"Business, Management",20,No,A15
+11/2/2020 17:07:36,1987,No,,,,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,No,A20
+11/2/2020 17:09:03,1993,No,,,,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",23,No,A20
+11/2/2020 17:11:13,1988,No,,,8/15/2020,Female,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",14,Yes,S20
+11/2/2020 17:11:28,1979,"Yes, and I'm currently smoking",2000,,1/1/2020,Male,3/1/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",18,Yes,A19
+11/2/2020 17:12:57,1984,No,,,10/1/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,Yes,S20
+11/2/2020 17:13:48,1966,"Yes, and I stopped",1981,2018,7/1/2019,Male,10/11/2019,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",19,Yes,S19
+11/2/2020 17:14:05,1982,No,,,2/2/2021,Female,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",18,Yes,A20
+11/2/2020 17:14:34,1993,"Yes, and I stopped",2016,2020,10/12/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",15,No,A20
+11/2/2020 17:14:42,1996,"Yes, and I stopped",2016,2020,11/3/2020,Male,,No,"Finance, Economy",16,No,A20
+11/2/2020 17:15:22,1977,"Yes, and I stopped",1989,2005,1/2/2020,Male,11/2/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",19,No,A19
+11/2/2020 17:16:24,1981,No,,,2/1/2020,Male,3/8/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",25,No,A19
+11/2/2020 17:18:09,1970,No,,,9/9/2020,Male,10/19/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",16,Yes,S20
+11/2/2020 17:23:12,1983,"Yes, and I'm currently smoking",2000,2017,11/2/2020,Male,11/2/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",21,Yes,A18
+11/2/2020 17:25:45,1979,"Yes, and I stopped",1997,2017,,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",24,No,S20
+11/2/2020 17:32:37,1995,No,,,11/1/2020,Male,,No,"Finance, Economy",18,No,A20
+11/2/2020 17:38:56,1973,No,,,,,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",17,Yes,S20
+11/2/2020 17:55:10,1990,No,,,9/1/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",18,No,S20
+11/2/2020 17:58:59,1995,No,,,11/2/2020,Male,,No,"Business, Management",18,No,S20
+11/2/2020 17:59:13,1995,No,,,10/1/2019,Male,10/1/2020,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",18,No,A20
+11/2/2020 18:02:57,,"Yes, and I'm currently smoking",2015,,,Male,,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,No,A20
+11/2/2020 18:07:41,1979,No,,,,Female,,No,Other,17,No,A20
+11/2/2020 18:10:36,1993,No,,,8/1/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",24,No,S20
+11/2/2020 18:23:04,1974,No,,,5/1/2020,Male,10/1/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",16,Yes,S20
+11/2/2020 18:27:07,1955,No,,,3/1/1980,Male,5/1/1980,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",17,Yes,S20
+11/2/2020 18:37:10,1986,No,,,,Male,,No,Other,18,No,S20
+11/2/2020 18:47:13,1995,No,,,,Male,,,Other,4,No,A20
+11/2/2020 18:55:52,1983,"Yes, and I stopped",2000,2013,6/1/2020,Male,,No,"Medicine, Biology",24,Yes,A19
+11/2/2020 20:06:29,1976,"Yes, and I stopped",1995,2001,9/25/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",16,No,S20
+11/2/2020 20:14:49,1986,No,,,4/15/2021,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",16,No,A20
+11/2/2020 20:35:13,1987,"Yes, and I stopped",2002,2014,,Female,,,"Business, Management",5,No,A20
+11/2/2020 20:53:29,1986,No,,,,Male,,,"Mathematics, Physics, Chemistry, Computer Science, Statistics",16,Yes,A20
+11/2/2020 21:03:05,1989,No,,,,Male,,,Other,20,No,A20
+11/2/2020 21:13:04,1982,No,,,4/2/2020,Female,7/31/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,No,A19
+11/2/2020 21:26:24,1989,No,,,,Female,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",23,No,A20
+11/2/2020 21:32:47,1982,"Yes, and I stopped",2004,2015,3/1/2020,Male,3/13/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",6,No,A19
+11/2/2020 23:06:38,1984,"Yes, and I'm currently smoking",2004,,10/1/2020,Male,,No,Other,17,No,A20
+11/2/2020 23:49:14,1994,No,,,8/17/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",22,No,S20
+11/3/2020 0:05:49,1983,No,,,10/15/2020,Female,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",19,Yes,S20
+11/3/2020 1:00:35,1974,No,,,9/15/2020,Male,9/29/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",20,Yes,S20
+11/3/2020 1:22:26,1981,"Yes, and I stopped",,2005,10/1/2020,Male,,No,"Business, Management",16,No,A20
+11/3/2020 9:40:29,1991,No,,,11/1/2019,Male,2/1/2020,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",6,No,S19
+11/3/2020 9:59:36,1993,No,,,,Female,,No,"Business, Management",19,No,A19
+11/3/2020 10:09:21,1955,"Yes, and I'm currently smoking",1971,,,Male,,No,Other,18,Yes,A17
+11/3/2020 13:35:02,1975,No,,,,Female,,,"Mathematics, Physics, Chemistry, Computer Science, Statistics",5,Yes,A20
+11/3/2020 14:56:14,1985,"Yes, and I stopped",2000,2016,11/1/2020,Male,,No,"Finance, Economy",18,No,S20
+11/3/2020 16:08:56,1978,"Yes, and I stopped",1995,2020,2/1/2020,Male,3/15/2020,Yes,"Business, Management",21,Yes,A19
+11/3/2020 20:59:10,1987,No,,,11/1/2019,Female,1/1/2020,Yes,"Medicine, Biology",14,No,A19
+11/4/2020 11:36:20,1996,"Yes, and I'm currently smoking",2015,2018,11/1/2020,Male,,No,"Finance, Economy",20,No,A20
+11/4/2020 15:29:50,1988,"Yes, and I'm currently smoking",2009,,10/1/2020,Female,,No,"Business, Management",18,No,S20
+11/4/2020 17:39:09,1993,"Yes, and I'm currently smoking",2009,,5/6/2019,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",18,No,A20
+11/4/2020 23:15:54,1979,No,,,,Male,,,"Mathematics, Physics, Chemistry, Computer Science, Statistics",23,Yes,S18
+11/5/2020 7:35:17,1992,No,,,9/1/2020,Female,,No,"Finance, Economy",19,No,A20
+11/7/2020 22:42:31,1967,"Yes, and I stopped",1987,2014,5/1/2018,Male,5/11/2018,Yes,"Mathematics, Physics, Chemistry, Computer Science, Statistics",23,Yes,A17
+11/9/2020 21:28:35,1989,No,,,12/9/2019,Female,6/9/2020,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",,Yes,A20
+11/9/2020 23:14:26,1993,No,,,11/30/2020,Male,,No,"Mathematics, Physics, Chemistry, Computer Science, Statistics",16,No,A20
+11/13/2020 10:04:47,1992,No,,,11/13/2020,Female,,No,"Business, Management",19,No,A20
+11/13/2020 14:54:17,1997,"Yes, and I'm currently smoking",2014,,11/2/2020,Male,,No,"Medicine, Biology",18,No,A20
